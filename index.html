@@ -135,7 +135,8 @@ figcaption{margin-top:10px;color:var(--muted);font-size:14px}
 .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .gallery div:hover img{transform:scale(1.06)}
 .gallery span{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 14px;background:linear-gradient(to top,rgba(0,0,0,.68),transparent);color:#fff;font-weight:700;font-size:15px}
-@media (max-width:760px){.gallery{grid-template-columns:minmax(0,1fr)}}
+.gallery .wide{grid-column:1/-1;aspect-ratio:16/7}
+@media (max-width:760px){.gallery{grid-template-columns:minmax(0,1fr)}.gallery .wide{aspect-ratio:4/3}}
 
 /* Apoiar */
 .need{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
@@ -423,6 +424,7 @@ footer{padding-block:24px;color:var(--muted);font-size:14px}
       <div><img src="img/gallery-1.jpg" alt="Banda a tocar ao vivo no palco do TeenStreet Europa, com a multidão a cantar" loading="lazy"><span>Noites inteiras entregues a Jesus</span></div>
       <div><img src="img/gallery-4.jpg" alt="Pequeno grupo a louvar numa tenda, com guitarra, bateria e adolescentes de braço no ar" loading="lazy"><span>Também assim: um pequeno grupo, numa tenda</span></div>
       <div><img src="img/gallery-2.jpg" alt="Grupo de adolescentes com os braços nos ombros uns dos outros, de costas para a câmara" loading="lazy"><span>Amizades que nascem ali — e ficam</span></div>
+      <div class="wide"><img src="img/gallery-5.jpg" alt="Equipa do TeenStreet reunida, de punho erguido, a celebrar" loading="lazy"><span>Esta é a equipa que faz isto acontecer</span></div>
     </div>
   </div>
 </section>
