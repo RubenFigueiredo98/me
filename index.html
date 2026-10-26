@@ -557,8 +557,9 @@ footer{padding-block:24px;color:var(--muted);font-size:14px}
     if($('tel').value.trim()) L.push('Telemóvel: '+$('tel').value.trim());
     if($('email').value.trim()) L.push('Email: '+$('email').value.trim());
     L.push('');
+    var noticiasVia=[]; if($('viaEmail').checked) noticiasVia.push('email'); if($('viaWa').checked) noticiasVia.push('WhatsApp');
     if($('orar').checked) L.push('- Vou orar por ti e pelos adolescentes de Portugal.');
-    if($('news').checked){ var v=[]; if($('viaEmail').checked) v.push('email'); if($('viaWa').checked) v.push('WhatsApp'); L.push('- Quero receber notícias e motivos de oração'+(v.length?' por '+v.join(' e '):'')+'.'); }
+    if($('news').checked) L.push('- Quero receber notícias e motivos de oração'+(noticiasVia.length?' por '+noticiasVia.join(' e '):'')+'.');
     if(m) L.push('- Apoio mensal de '+m+' €'+($('inicio').value.trim()?', a partir de '+$('inicio').value.trim():'')+'.');
     if(unico) L.push('- Donativo único de '+unico+' € para o arranque.');
     var text=L.join('\n');
