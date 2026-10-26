@@ -528,6 +528,7 @@ footer{padding-block:24px;color:var(--muted);font-size:14px}
       el.classList.add('reveal-on','pre'); io.observe(el);
     });
   }
+  var FORMSPREE_ENDPOINT='https://formspree.io/f/xgaaarlo';
   var $=function(id){return document.getElementById(id)};
   $('news').addEventListener('change',function(){ $('newsVia').hidden=!this.checked; });
   document.querySelectorAll('input[name=mensal]').forEach(function(r){
@@ -565,6 +566,16 @@ footer{padding-block:24px;color:var(--muted);font-size:14px}
     $('wa').href='https://wa.me/351919656891?text='+encodeURIComponent(text);
     $('done').hidden=false;
     $('done').scrollIntoView({behavior:'smooth',block:'nearest'});
+
+    if(FORMSPREE_ENDPOINT.indexOf('SUBSTITUIR')===-1){
+      var fd=new FormData();
+      fd.append('nome',nome);
+      if($('tel').value.trim()) fd.append('telemovel',$('tel').value.trim());
+      if($('email').value.trim()){ fd.append('email',$('email').value.trim()); fd.append('_replyto',$('email').value.trim()); }
+      fd.append('mensagem',text);
+      fd.append('_subject','Novo registo TeenStreet - '+nome);
+      fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:fd}).catch(function(){});
+    }
   });
 })();
 </script>
