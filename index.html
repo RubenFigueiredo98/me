@@ -25,8 +25,6 @@
   --display:'Archivo Black', 'Arial Black', Impact, sans-serif;
   --body:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --red:#C8222A; --red-ink:#FF6B70; --on-red:#FFFFFF; --bg:#141011; --tint:#1F1819; --ink:#F4ECEC; --muted:#BDB0B1; --line:#3A2E2F; --card:#1B1516; color-scheme:dark}}
 :root[data-theme="dark"]{
   --red:#C8222A; --red-ink:#FF6B70; --on-red:#FFFFFF; --bg:#141011; --tint:#1F1819; --ink:#F4ECEC; --muted:#BDB0B1; --line:#3A2E2F; --card:#1B1516; color-scheme:dark}
 
@@ -205,7 +203,6 @@ input:focus{border-color:var(--red-ink);outline:none}
 
 /* Rodapé */
 .foot{--f-bg:#1C1617;--f-ink:#F4ECEC;--f-muted:#B9ACAD;--f-line:rgba(255,255,255,.12);background:var(--f-bg);color:var(--f-ink);padding-block:72px 28px;padding-bottom:max(28px,env(safe-area-inset-bottom,0px))}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .foot{--f-bg:#0C0909}}
 :root[data-theme="dark"] .foot{--f-bg:#0C0909}
 .foot a{color:var(--f-ink)}
 .foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1.1fr);gap:48px;align-items:start}
@@ -223,6 +220,8 @@ input:focus{border-color:var(--red-ink);outline:none}
 .foot-top-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;font-weight:600}
 .foot-top-link:hover svg{transform:translateY(-3px)}
 .foot-top-link svg{transition:transform .25s}
+.foot-bottom a:not(.foot-top-link){text-underline-offset:3px;transition:color .2s}
+.foot-bottom a:not(.foot-top-link):hover{color:#FF8A8E}
 @media (max-width:820px){.foot-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}.foot-brand{grid-column:1/-1}}
 @media (max-width:520px){.foot{padding-block:52px 24px}.foot-top{grid-template-columns:minmax(0,1fr);gap:32px}.foot-cta .btn{width:100%;justify-content:center}.foot-bottom{margin-top:40px;flex-direction:column;align-items:flex-start}}
 
@@ -293,6 +292,47 @@ input:focus{border-color:var(--red-ink);outline:none}
   .ps{font-size:16px;margin-top:24px}
   .contact ul{font-size:16px}
   .contact .sel{overflow-wrap:anywhere}
+}
+
+/* TeenStreet Brand Assets */
+.ts-motto-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+.ts-motto-row .chips {
+  margin-top: 0;
+}
+.ts-motto-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ts-motto-badge:hover {
+  border-color: var(--red);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(211, 36, 44, 0.08);
+}
+.ts-motto-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.ts-link-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
 }
 </style>
 </head>
@@ -369,7 +409,12 @@ input:focus{border-color:var(--red-ink);outline:none}
       <div class="eyebrow" data-i18n="ts.eyebrow">O que é o TeenStreet</div>
       <h2 class="h2" data-i18n="ts.h2">Um movimento global de jovens seguidores de Jesus</h2>
       <p class="lede" data-i18n="ts.p">Um ministério internacional e não confessional da OM. Em parceria com igrejas e comunidades, inspira, capacita e liga adolescentes, para que vivam uma amizade real com Jesus, O reflitam no dia a dia e O deem a conhecer.</p>
-      <div class="chips" data-i18n-attr="aria-label|ts.motto" aria-label="Lema"><span class="chip">HAVE FUN</span><span class="chip">GO DEEP</span><span class="chip">BE BOLD</span></div>
+      <div class="ts-motto-row">
+        <div class="chips" data-i18n-attr="aria-label|ts.motto" aria-label="Lema"><span class="chip">HAVE FUN</span><span class="chip">GO DEEP</span><span class="chip">BE BOLD</span></div>
+        <div class="ts-motto-badge" title="TeenStreet">
+          <img src="img/ts-logo-red.png" alt="TeenStreet" class="ts-motto-logo" width="90" height="40">
+        </div>
+      </div>
     </div>
     <div class="pillars">
       <div class="pillar"><h3 data-i18n="ts.p1h">Pequenos grupos</h3><p data-i18n="ts.p1">Cinco a sete adolescentes com um líder adulto, que vão a fundo na Bíblia, oram e partilham a vida.</p></div>
@@ -549,7 +594,7 @@ input:focus{border-color:var(--red-ink);outline:none}
       <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><span><small>Email</small><span class="sel">figueiredo.ruben@outlook.com</span></span></li>
       <li><a class="lk" href="https://www.instagram.com/rubenfigueiredo.ts/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.9 7.9"/></svg></span><span><small>Instagram</small>@rubenfigueiredo.ts</span></a></li>
       <li><a class="lk" href="https://www.instagram.com/teenstreet_portugal/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.9 7.9"/></svg></span><span><small>Instagram</small>@teenstreet_portugal</span></a></li>
-      <li><a class="lk" href="https://teenstreet.life/eu/pt/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span><span><small data-i18n="c.site">Site TeenStreet</small>teenstreet.life</span></a></li>
+      <li><a class="lk" href="https://teenstreet.life/eu/pt/" target="_blank" rel="noopener"><span class="ic"><img src="img/ts-symbol-red.png" alt="TeenStreet" class="ts-link-icon"></span><span><small data-i18n="c.site">Site TeenStreet</small>teenstreet.life</span></a></li>
     </ul>
   </div>
 </section>
@@ -578,7 +623,7 @@ input:focus{border-color:var(--red-ink);outline:none}
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span id="ano">2026</span> Rúben Figueiredo · <span data-i18n="foot.org">TeenStreet Portugal · Operação Mobilização</span></span>
+      <span>© <span id="ano">2026</span> Rúben Figueiredo · <span data-i18n="foot.org"><a href="https://teenstreet.life/eu/pt/" target="_blank" rel="noopener">TeenStreet Portugal</a> · <a href="https://omportugal.org/" target="_blank" rel="noopener">Operação Mobilização</a></span></span>
       <a href="#topo" class="foot-top-link"><span data-i18n="foot.top">Voltar ao topo</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
     </div>
   </div>
@@ -647,7 +692,7 @@ input:focus{border-color:var(--red-ink);outline:none}
     'c.h2':'Let’s talk','c.p':'I’d be glad to tell you more about TeenStreet and hear your story.','c.site':'TeenStreet website',
     'foot.tag':'OM Portugal missionary serving with TeenStreet Portugal, from 2027 to 2030.','foot.navAria':'Footer','foot.explore':'Explore',
     'foot.gallery':'Gallery','foot.contact':'Contact','foot.ctaH':'Walk with me','foot.ctaP':'Pray, give or simply send a message. Every partner counts.',
-    'foot.org':'TeenStreet Portugal · Operation Mobilisation','foot.top':'Back to top',
+    'foot.org':'<a href="https://teenstreet.life/eu/pt/" target="_blank" rel="noopener">TeenStreet Portugal</a> · <a href="https://omportugal.org/" target="_blank" rel="noopener">Operation Mobilisation</a>','foot.top':'Back to top',
     /* textos usados pelo JavaScript */
     'js.copied':'Copied','js.selected':'Selected: copy it',
     'js.errName':'Please write your name so I know who you are.','js.errPick':'Please choose at least one way to help.',
